@@ -7,7 +7,7 @@ namespace ProductReviewManagement
 {
     public class Management
     {
-        public readonly DataTable dataTable = new DataTable();
+       // public readonly DataTable dataTable = new DataTable();
         public void TopRecords(List<ProductReview> listProductReview)
         {
             var recordedData = (from productReviews in listProductReview
@@ -24,5 +24,18 @@ namespace ProductReviewManagement
 
         }
 
+        public void SelectedRecords(List<ProductReview> listProductReview)
+        {
+            var recordData = (from productReview in listProductReview
+                              where( productReview.ProducID ==1 || productReview.ProducID ==4 || productReview.ProducID ==9)
+                              && productReview.Rating > 3
+                              select productReview
+                              );
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.UserID
+                   + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
+            }
+        }
     }
 }

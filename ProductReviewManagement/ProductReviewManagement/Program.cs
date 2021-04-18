@@ -43,7 +43,9 @@ namespace ProductReviewManagement
             //}
             //UC2
             Management management = new Management();
-            management.TopRecords(productReviewList);
+            //management.TopRecords(productReviewList);
+            //UC3
+            management.SelectedRecords(productReviewList);
         }
     }
 }
