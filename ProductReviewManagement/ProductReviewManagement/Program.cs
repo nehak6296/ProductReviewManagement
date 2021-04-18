@@ -51,7 +51,9 @@ namespace ProductReviewManagement
             //UC5
             //management.SelectProductId(productReviewList);
             //UC6
-            management.SkipTopRecords(productReviewList);
+            //management.SkipTopRecords(productReviewList);
+            //UC8
+            management.AddToDataTable(productReviewList);
         }
     }
 }

@@ -68,5 +68,52 @@ namespace ProductReviewManagement
                        + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
             }
         }
+
+        public void AddToDataTable(List<ProductReview> productReviewList)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ProductID");
+            table.Columns.Add("UserID");
+            table.Columns.Add("Rating");
+            table.Columns.Add("Review");
+            table.Columns.Add("isLike");
+
+            table.Rows.Add("1", "1", "2","Good","true");
+            table.Rows.Add("2", "1", "4", "Good", "true");
+            table.Rows.Add("3", "1", "5", "Good", "true");
+            table.Rows.Add("4", "1", "6", "Good", "false");
+            table.Rows.Add("5", "1", "2", "nice", "true");
+            table.Rows.Add("6", "1", "1", "bad", "true");
+            table.Rows.Add("8", "1", "1", "Good", "false");
+            table.Rows.Add("8", "1", "9", "Nice", "true");
+            table.Rows.Add("2", "1", "10", "Nice", "true");
+            table.Rows.Add("10", "1", "8", "Nice", "true");
+            table.Rows.Add("11", "1", "3", "Nice", "true");
+            table.Rows.Add("10", "1", "9", "Nice", "true");
+            table.Rows.Add("11", "1", "3", "Good", "true");
+            table.Rows.Add("12", "1", "1", "Bad", "false");
+            table.Rows.Add("13", "1", "4", "Good", "true");
+            table.Rows.Add("13", "1", "5", "Nice", "true");
+            table.Rows.Add("14", "1", "6", "Good", "true");
+            table.Rows.Add("15", "1", "9", "Nice", "true");
+            table.Rows.Add("16", "1", "1", "Bad", "false");
+            table.Rows.Add("16", "1", "1", "Bad","false");
+            table.Rows.Add("17", "1", "10", "Nice", "true");
+            table.Rows.Add("18", "1", "8", "nice", "true");
+            table.Rows.Add("3", "1", "10", "nice", "true");
+            table.Rows.Add("5", "1", "8", "nice", "true");
+            table.Rows.Add("6", "1", "3", "nice", "true");
+            Console.WriteLine("Data Added To Data Table Successfully.......");
+            DisplayDataTable(table);
+
+        }
+        public void DisplayDataTable(DataTable table)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                Console.WriteLine("ProductId:{0},UserId{1},Rating{2},Review{3},isLike{4}",row["ProductId"],row["UserId"],row["Rating"],row["Review"],row["isLike"]);
+            }
+            Console.ReadKey();
+        }
     }
 }
