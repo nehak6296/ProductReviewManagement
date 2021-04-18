@@ -7,14 +7,14 @@ namespace ProductReviewManagement
 {
     public class Management
     {
-       // public readonly DataTable dataTable = new DataTable();
+        // public readonly DataTable dataTable = new DataTable();
         public void TopRecords(List<ProductReview> listProductReview)
         {
             var recordedData = (from productReviews in listProductReview
                                 orderby productReviews.Rating descending
                                 select productReviews).Take(3);
 
-           
+
             foreach (var list in recordedData)
             {
                 Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.UserID
@@ -27,7 +27,7 @@ namespace ProductReviewManagement
         public void SelectedRecords(List<ProductReview> listProductReview)
         {
             var recordData = (from productReview in listProductReview
-                              where( productReview.ProducID ==1 || productReview.ProducID ==4 || productReview.ProducID ==9)
+                              where (productReview.ProducID == 1 || productReview.ProducID == 4 || productReview.ProducID == 9)
                               && productReview.Rating > 3
                               select productReview
                               );
@@ -40,10 +40,10 @@ namespace ProductReviewManagement
 
         public void CountOfRecords(List<ProductReview> listProductReview)
         {
-        var recordData = listProductReview.GroupBy(x => x.ProducID).Select(x => new { ProductID = x.Key, Count = x.Count() });
+            var recordData = listProductReview.GroupBy(x => x.ProducID).Select(x => new { ProductID = x.Key, Count = x.Count() });
             foreach (var list in recordData)
             {
-                Console.WriteLine(list.ProductID+"--->"+list.Count);
+                Console.WriteLine(list.ProductID + "--->" + list.Count);
             }
         }
 
@@ -53,9 +53,20 @@ namespace ProductReviewManagement
                               select new { productReview.ProducID, productReview.Review });
             foreach (var list in recordData)
             {
-                Console.WriteLine("ProductId:"+list.ProducID+"Review:"+list.Review);
+                Console.WriteLine("ProductId:" + list.ProducID + "Review:" + list.Review);
             }
-        
+
+        }
+
+        public void SkipTopRecords(List<ProductReview> productReviewList)
+        {
+            var recordData = (from productReview in productReviewList
+                              select productReview).Skip(5);
+            foreach (var list in recordData)
+            {
+                Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.UserID
+                       + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
+            }
         }
     }
 }
