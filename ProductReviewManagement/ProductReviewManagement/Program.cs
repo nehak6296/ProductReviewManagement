@@ -6,9 +6,8 @@ namespace ProductReviewManagement
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Product Review Management..");
-
+        {            
+            //UC1
             List<ProductReview> productReviewList = new List<ProductReview>()
                 {
                 new ProductReview(){ProducID=1,UserID=1,Rating=2,Review="Good",isLike=true},
@@ -37,13 +36,14 @@ namespace ProductReviewManagement
                 new ProductReview(){ProducID=6,UserID=1,Rating=3,Review="nice",isLike=true}
 
             };
-            foreach (var list in productReviewList)
-            {
-                Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.UserID
-                    + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
-            }
-
-
+            //foreach (var list in productReviewList)
+            //{
+            //    Console.WriteLine("ProductID:- " + list.ProducID + " " + "UserID:- " + list.UserID
+            //        + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
+            //}
+            //UC2
+            Management management = new Management();
+            management.TopRecords(productReviewList);
         }
     }
 }
