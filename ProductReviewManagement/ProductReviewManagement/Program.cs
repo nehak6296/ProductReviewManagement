@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ProductReviewManagement
 {
     class Program
     {
+       // public readonly DataTable table = new DataTable();
         static void Main(string[] args)
         {            
             //UC1
@@ -54,6 +56,8 @@ namespace ProductReviewManagement
             //management.SkipTopRecords(productReviewList);
             //UC8
             management.AddToDataTable(productReviewList);
+            //UC9
+            management.RetriveFromDataTable();
         }
     }
 }

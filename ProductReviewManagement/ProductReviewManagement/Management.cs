@@ -7,7 +7,7 @@ namespace ProductReviewManagement
 {
     public class Management
     {
-        // public readonly DataTable dataTable = new DataTable();
+        public readonly DataTable table = new DataTable();
         public void TopRecords(List<ProductReview> listProductReview)
         {
             var recordedData = (from productReviews in listProductReview
@@ -68,10 +68,10 @@ namespace ProductReviewManagement
                        + " " + "Rating:- " + list.Rating + " " + "Review:- " + list.Review + " " + "isLike:- " + list.isLike);
             }
         }
-
+        
         public void AddToDataTable(List<ProductReview> productReviewList)
         {
-            DataTable table = new DataTable();
+            //DataTable table = new DataTable();
             table.Columns.Add("ProductID");
             table.Columns.Add("UserID");
             table.Columns.Add("Rating");
@@ -104,14 +104,27 @@ namespace ProductReviewManagement
             table.Rows.Add("5", "1", "8", "nice", "true");
             table.Rows.Add("6", "1", "3", "nice", "true");
             Console.WriteLine("Data Added To Data Table Successfully.......");
-            DisplayDataTable(table);
+            //DisplayDataTable(table);
 
         }
+
+        public void RetriveFromDataTable()
+        {
+            var recordData = (from rows in table.AsEnumerable()
+                 where rows.Field<string>("isLike") == "true"
+                 select rows);
+            foreach (DataRow row in recordData)
+            {
+                Console.WriteLine("ProductId:{0},UserId:{1},Rating:{2},Review:{3},isLike:{4}", row["ProductId"], row["UserId"], row["Rating"], row["Review"], row["isLike"]);
+            }
+        }
+
         public void DisplayDataTable(DataTable table)
         {
             foreach (DataRow row in table.Rows)
             {
-                Console.WriteLine("ProductId:{0},UserId{1},Rating{2},Review{3},isLike{4}",row["ProductId"],row["UserId"],row["Rating"],row["Review"],row["isLike"]);
+                
+                Console.WriteLine("ProductId:{0},UserId:{1},Rating:{2},Review:{3},isLike:{4}",row["ProductId"],row["UserId"],row["Rating"],row["Review"],row["isLike"]);
             }
             Console.ReadKey();
         }
